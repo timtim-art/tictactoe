@@ -2,7 +2,7 @@ import socket
 from _thread import start_new_thread
 import sys
 
-server = '192.168.0.79'
+server = '10.252.11.186'
 port = 5555
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,7 +15,7 @@ except socket.error as msg:
 
 # This defines how many clients can connect to the server
 socket.listen(2)
-print('Waiting for a connection')
+print(f'Waiting for a connection. Server listens to port {port}')
 
 def read_position(str):
     str = str.split(',')
