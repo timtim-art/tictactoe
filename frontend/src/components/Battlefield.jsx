@@ -7,7 +7,7 @@ function Battlefield() {
         {
             'id': 1,
             'type': 'scissor',
-            'x': 20,
+            'x': 250,
             'y': 300
         },
         {
@@ -25,7 +25,7 @@ function Battlefield() {
     ]
 
     return (
-        <div className="w-96 h-96 border-4 border-black relative">
+        <div className="w-[500px] h-[700px] border-4 border-black relative">
             <h1 className="text-center">This is the battlefield</h1>
             {warrior_list.map(warrior => <Warrior key={warrior.id} type={warrior.type} x={warrior.x} y={warrior.y}/>)}
 
