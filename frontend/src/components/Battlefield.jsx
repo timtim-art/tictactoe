@@ -5,22 +5,22 @@ function Battlefield() {
 
     const warrior_list = [
         {
-            'id': 1,
-            'type': 'scissor',
-            'x': 250,
-            'y': 300
+            id: 1,
+            type: 'scissor',
+            x: 250,
+            y: 300
         },
         {
-            'id': 2,
-            'type': 'stone',
-            'x': 200,
-            'y': 120
+            id: 2,
+            type: 'stone',
+            x: 200,
+            y: 120
         },
         {
-            'id': 3,
-            'type': 'paper',
-            'x': 350,
-            'y': 10
+            id: 3,
+            type: 'paper',
+            x: 350,
+            y: 10
         }
     ]
 
