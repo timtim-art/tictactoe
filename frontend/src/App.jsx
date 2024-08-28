@@ -1,12 +1,12 @@
-
-
+import Battlefield from "./components/Battlefield.jsx";
 function App() {
 
-    console.log('test')
+
+
 
   return (
-    <div>
-        <h1 className='text-amber-200'>TICTACTOE</h1>
+    <div className="w-screen h-screen flex flex-col items-center justify-center">
+        <Battlefield />
     </div>
   )
 }
