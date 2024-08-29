@@ -97,6 +97,7 @@ while len(set(warrior.type for warrior in warrior_list)) > 1:  # Continue until 
                 run(opponent_to_find, warrior)
 
     # Adding a delay to slow down the loop for observation
+    print(warrior_list)
     time.sleep(0.1)
 
 # Print the final state
