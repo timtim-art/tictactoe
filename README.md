@@ -1,4 +1,30 @@
-# Live Streaming Data
+# Broadcasting Prototype
+
+start server (install [go first](https://go.dev/doc/install)):
+```sh
+cd backend-go
+go run cmd/main.go
+```
+
+setup game (game id will be returned)
+```sh
+curl "localhost:8080/api/v1/fight/setup" 
+```
+
+start serving react app
+```sh
+cd frontend
+npm run dev
+```
+
+call `http://localhost:5173/` in browser (try firefox or chrome if it does not work) in multiple tabs
+
+start fight
+```sh
+curl "localhost:8080/api/v1/fight/start?gameId=1"
+```
+
+# Live Streaming Data Research
 
 Prerequisites:
 - Client is a browser

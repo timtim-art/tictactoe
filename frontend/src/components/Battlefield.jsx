@@ -29,21 +29,31 @@ function Battlefield() {
     //     }
     // ];
 
-    const socket = io('localhost:3000')
+    //const socket = io('localhost:8080/api/v1/stream/join?gameId=1')
 
 
+    let conn
     function connectSocket() {
+        
+        if (!window.WebSocket) {
+            console.log("Your browser does not suppot Websockets")
+            return
+        }
+        
+        conn = new WebSocket(`ws://localhost:8080/api/v1/stream/join?gameId=1`)
+        conn.onclose = () => {
+            console.log("Websocket connection closed")
+        }
+        conn.onmessage = (event) => {
+            let message = event.data
+            console.log(message)
+            setWarriorList(JSON.parse(message))
+        }
 
-        socket.on('connection', (warrior_list) => {
+        /* socket.on('connection', (warrior_list) => {
             console.log(warrior_list)
             setWarriorList(warrior_list)
-
-        })
-
-        setInterval(() => {
-
-        }, 5000)
-
+        }) */
     }
 
     useEffect(() => {
