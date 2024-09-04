@@ -3,7 +3,6 @@ package websocket
 import (
 	"encoding/json"
 	"log"
-	"math/rand"
 	"net/http"
 	"strconv"
 	"time"
@@ -68,25 +67,26 @@ func (g *GameHandler) StartFight(c *gin.Context) {
 		return
 	}
 
-	go sendRandom(game)
+	go sendGame(game)
 }
 
-func sendRandom(game *Hub) {
+func sendGame(game *Hub) {
+	warriors := gameplay.CreateWarriorsRandomly()
 	for {
-		symbols := []string{"scissor", "stone", "paper"}
-		warrior := &gameplay.Warrior{
-			X:      rand.Intn(490),
-			Y:      rand.Intn(690),
-			Symbol: symbols[rand.Intn(3)],
+		if gameplay.Finished(warriors) {
+			return
 		}
-		warriors := []gameplay.Warrior{*warrior}
+
 		b, err := json.Marshal(warriors)
 		if err != nil {
 			log.Printf("Error %s when marshalling warriors", err)
 			return
 		}
 		game.broadcast <- b
-		time.Sleep(500 * time.Millisecond)
+
+		gameplay.CalcPositions(warriors)
+
+		time.Sleep(40 * time.Millisecond)
 	}
 }
 
